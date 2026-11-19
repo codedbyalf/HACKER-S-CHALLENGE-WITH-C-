@@ -1,0 +1,217 @@
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+
+int score = 0;
+int played[4] = {0, 0, 0, 0};
+
+void password()
+{
+    char ans;
+    clrscr();
+
+    cout << "\n--- PASSWORD DETECTIVE ---";
+    cout << "\n\nWhich is the strongest password?";
+    cout << "\n\nA. password123";
+    cout << "\nB. 12345678";
+    cout << "\nC. T!ger#92Moon";
+    cout << "\nD. yourname123";
+
+    cout << "\n\nEnter your answer: ";
+    cin >> ans;
+
+    if(ans == 'C' || ans == 'c')
+    {
+        cout << "\nCorrect! Strong password!";
+        score = score + 10;
+    }
+    else
+    {
+        cout << "\nIncorrect! Use a unique password with";
+        cout << "\nuppercase, lowercase, numbers and symbols.";
+    }
+
+    played[0] = 1;
+    cout << "\n\nPress any key...";
+    getch();
+}
+
+void decoder()
+{
+    char ans[20];
+    clrscr();
+
+    cout << "\n--- CODE DECODER ---";
+    cout << "\n\nDecode this message:";
+    cout << "\nFRGH";
+    cout << "\n\nHint: Each letter is shifted by 3.";
+    cout << "\nEnter decoded word: ";
+    cin >> ans;
+
+    if(strcmpi(ans, "CODE") == 0)
+    {
+        cout << "\nCorrect! You decoded the message!";
+        score = score + 10;
+    }
+    else
+    {
+        cout << "\nIncorrect! The answer is CODE.";
+    }
+
+    played[1] = 1;
+    cout << "\n\nPress any key...";
+    getch();
+}
+
+void phishing()
+{
+    char ans;
+    clrscr();
+
+    cout << "\n--- PHISHING DETECTOR ---";
+    cout << "\n\nYou receive this message:";
+    cout << "\n\n'Your bank account will be blocked!";
+    cout << "\nClick this unknown link and enter";
+    cout << "\nyour password immediately.'";
+
+    cout << "\n\nIs this message suspicious?";
+    cout << "\nA. Yes";
+    cout << "\nB. No";
+    cout << "\n\nEnter answer: ";
+    cin >> ans;
+
+    if(ans == 'A' || ans == 'a')
+    {
+        cout << "\nCorrect! Never trust unknown links.";
+        score = score + 10;
+    }
+    else
+    {
+        cout << "\nIncorrect! This is a phishing warning sign.";
+    }
+
+    played[2] = 1;
+    cout << "\n\nPress any key...";
+    getch();
+}
+
+void logic()
+{
+    int ans;
+    clrscr();
+
+    cout << "\n--- LOGIC HACKER ---";
+    cout << "\n\nComplete the number pattern:";
+    cout << "\n2, 4, 8, 16, ?";
+    cout << "\n\nEnter the next number: ";
+    cin >> ans;
+
+    if(ans == 32)
+    {
+        cout << "\nCorrect! Excellent logical thinking!";
+        score = score + 10;
+    }
+    else
+    {
+        cout << "\nIncorrect! Each number is multiplied by 2.";
+    }
+
+    played[3] = 1;
+    cout << "\n\nPress any key...";
+    getch();
+}
+
+void report()
+{
+    int i;
+    int completed = 0;
+
+    clrscr();
+
+    cout << "\n--- MISSION REPORT ---";
+
+    for(i = 0; i < 4; i = i + 1)
+    {
+        if(played[i] == 1)
+        {
+            completed = completed + 1;
+        }
+    }
+
+    cout << "\n\nMissions completed: " << completed;
+    cout << "\nTotal score: " << score << " / 40";
+
+    cout << "\n\nYour Rank: ";
+
+    if(score >= 30)
+        cout << "CYBER EXPERT";
+    else if(score >= 20)
+        cout << "CYBER LEARNER";
+    else if(score >= 10)
+        cout << "BEGINNER";
+    else
+        cout << "ROOKIE";
+
+    cout << "\n\nKeep learning and stay cyber safe!";
+    cout << "\n\nPress any key...";
+    getch();
+}
+
+void main()
+{
+    int choice;
+
+    do
+    {
+        clrscr();
+
+        cout << "==============================";
+        cout << "\n     HACKER'S CHALLENGE";
+        cout << "\n==============================";
+
+        cout << "\n\n1. Password Detective";
+        cout << "\n2. Code Decoder";
+        cout << "\n3. Phishing Detector";
+        cout << "\n4. Logic Hacker";
+        cout << "\n5. Mission Report";
+        cout << "\n6. Exit";
+
+        cout << "\n\nEnter your choice: ";
+        cin >> choice;
+
+        switch(choice)
+        {
+            case 1:
+                password();
+                break;
+
+            case 2:
+                decoder();
+                break;
+
+            case 3:
+                phishing();
+                break;
+
+            case 4:
+                logic();
+                break;
+
+            case 5:
+                report();
+                break;
+
+            case 6:
+                clrscr();
+                cout << "\nThank you for playing!";
+                cout << "\nStay Safe. Stay Smart!";
+                getch();
+                break;
+
+            default:
+                cout << "\nInvalid choice!";
+                getch();
+        }
+
+    } while(choice != 6);
+}
